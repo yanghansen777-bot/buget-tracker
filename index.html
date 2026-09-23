@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PocketPal — Your money mission control</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="overrides.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="PocketPal home">
+        <span class="brand-mark">✦</span>
+        <span>Pocket<span>Pal</span></span>
+      </a>
+      <div class="topbar-actions">
+        <span class="save-status"><span class="status-dot"></span>Saved just now</span>
+        <button class="avatar" aria-label="Open profile">JS</button>
+      </div>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">FRIDAY, SEPTEMBER 18 <span>•</span> MONEY MISSION</p>
+        <h1>Hey <span id="displayName">Jamie</span>! <button class="edit-name" id="editName" aria-label="Change your name">✎</button><br /><em>Let’s check in.</em></h1>
+        <p class="hero-text">See what you have, where it’s going, and what you need to remember.</p>
+      </div>
+      <div class="sun doodle" aria-hidden="true">☼</div>
+      <div class="hero-sticker" aria-hidden="true"><span>small steps</span><strong>big wins!</strong><span>↗</span></div>
+    </section>
+
+    <section class="balance-card" aria-label="Current balance">
+      <div class="balance-main">
+        <div class="balance-label">MY TOTAL BALANCE <span class="info">i</span></div>
+        <div class="balance-amount" id="balanceAmount">$0.00</div>
+        <div class="balance-change"><span>✦</span> Start your money mission</div>
+      </div>
+      <div class="balance-sparkline" aria-hidden="true">
+        <svg viewBox="0 0 240 90" preserveAspectRatio="none"><path d="M5 69 C 28 67, 31 52, 51 58 S 78 41, 97 49 S 124 59, 140 37 S 170 46, 184 27 S 214 29, 237 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="237" cy="9" r="5" fill="currentColor"/></svg>
+        <span class="spark-label">GOING UP!</span>
+      </div>
+    </section>
+
+    <section class="visual-hub" aria-label="Money visuals">
+      <div class="visual-heading"><div><p class="eyebrow">SEE THE BIG PICTURE</p><h2>Where is my money going?</h2></div><span class="visual-spark">✦</span></div>
+      <div class="visual-grid">
+        <div class="visual-panel spending-visual">
+          <div class="visual-panel-head"><h3>Spending mix</h3><span id="spendTotal">$0.00 spent</span></div>
+          <div class="donut-wrap"><div class="donut-chart" id="donutChart" role="img" aria-label="Spending by category"><span id="donutCenter">$0</span></div><div class="legend" id="spendLegend"><div class="empty-legend">Log spending to see your mix.</div></div></div>
+        </div>
+        <div class="visual-panel plan-visual">
+          <div class="visual-panel-head"><h3>My money plan</h3><span id="planCaption">No plans yet</span></div>
+          <div class="plan-bars" role="img" aria-label="Money plan breakdown">
+            <div class="plan-row"><div><span>Have now</span><strong id="planBalance">$0.00</strong></div><div class="bar-track"><i class="bar-have" id="barHave"></i></div></div>
+            <div class="plan-row"><div><span>Pay later</span><strong id="planOwed">$0.00</strong></div><div class="bar-track"><i class="bar-owed" id="barOwed"></i></div></div>
+            <div class="plan-row"><div><span>Left after plans</span><strong id="planLeft">$0.00</strong></div><div class="bar-track"><i class="bar-left" id="barLeft"></i></div></div>
+          </div>
+          <p class="plan-note" id="planNote">Add money or a future payment to build your plan.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="actions-section">
+      <div class="section-heading"><h2>What do you want to do?</h2><span class="star-burst">✦</span></div>
+      <div class="action-grid">
+        <button class="action-card add" data-modal="add">
+          <span class="action-icon">＋</span><span class="action-title">Add money</span><span class="action-subtitle">Money you got or saved</span><span class="arrow">↗</span>
+        </button>
+        <button class="action-card spend" data-modal="spend">
+          <span class="action-icon">↗</span><span class="action-title">Log spending</span><span class="action-subtitle">Where did it go?</span><span class="arrow">↗</span>
+        </button>
+        <button class="action-card owe" data-modal="owe">
+          <span class="action-icon">♧</span><span class="action-title">Add an owe</span><span class="action-subtitle">Calculate what you’ll pay later</span><span class="arrow">↗</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="lower-grid">
+      <div class="panel activity-panel">
+        <div class="panel-heading"><div><p class="eyebrow">YOUR MONEY TRAIL</p><h2>Recent activity</h2></div><button class="text-button" id="viewAll">View all <span>→</span></button></div>
+        <div id="activityList" class="activity-list">
+          <div class="empty-state">Your money trail is ready for its first entry.</div>
+        </div>
+      </div>
+      <div class="panel owe-panel">
+        <div class="panel-heading"><div><p class="eyebrow">OWE CALCULATOR</p><h2>What I’ll pay later</h2></div><span class="radar-icon">◎</span></div>
+        <div class="owe-highlight"><div><small>TOTAL OWED LATER <span id="owedCount"></span></small><strong id="owedAmount">$0.00</strong></div><span>Future you<br />will thank you! <b>→</b></span></div>
+        <div id="oweList"><div class="empty-state">No future payments yet. Add one when you make a promise.</div></div>
+      </div>
+    </section>
+
+    <footer><span>Made for curious minds</span><span class="footer-star">✦</span><span>One smart choice at a time</span></footer>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="close-modal" id="closeModal" aria-label="Close">×</button><div class="modal-kicker" id="modalKicker">NEW ENTRY</div><h2 id="modalTitle">Add money</h2><p id="modalHint">What money came in?</p><form id="entryForm"><label id="amountLabel">Amount<input id="entryAmount" type="number" min="0.01" step="0.01" placeholder="0.00" required /></label><label id="noteLabel">What will you pay for?<input id="entryNote" type="text" placeholder="e.g. Mom, a snack, movie tickets" required /></label><label id="dateLabel" class="optional-field">When will you pay? <span>(optional)</span><input id="entryDate" type="date" /></label><button class="submit-button" type="submit">Save it <span>→</span></button></form></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
